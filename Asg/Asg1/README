@@ -1,0 +1,9 @@
+//Alejandro Aguilar
+//aguil10@ucsc.edu
+
+//This program compiles but it can't run
+// because of an null pointer exception.
+// The problem is in options.java in the last for loop.
+// I commented tried to explain what i did in all my java files
+// and I hope I can at least get some credit for my work.
+

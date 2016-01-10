@@ -1,0 +1,78 @@
+Script started on Tue 06 Nov 2012 11:53:53 AM PST
+[?1034hbash-4.1$ mk uninit.c
++ for CSOURCE in '$*'
++ cid + uninit.c
++ checksource uninit.c
+++ echo uninit.c
+++ sed 's/\.c$//'
++ EXECBIN=uninit
++ gcc -g -O0 -Wall -Wextra -std=gnu99 uninit.c -o uninit -lm
+uninit.c: In function ‘main’:
+uninit.c:6: warning: unused parameter ‘argc’
+uninit.c:6: warning: unused parameter ‘argv’
+uninit.c:8: warning: ‘foo’ is used uninitialized in this function
+uninit.c:10: warning: ‘pointer’ is used uninitialized in this function
+bash-4.1$ valgrind uninit
+==15630== Memcheck, a memory error detector
+==15630== Copyright (C) 2002-2010, and GNU GPL'd, by Julian Seward et al.
+==15630== Using Valgrind-3.6.0 and LibVEX; rerun with -h for copyright info
+==15630== Command: uninit
+==15630== 
+==15630== Use of uninitialised value of size 8
+==15630==    at 0x37AAA437BB: _itoa_word (in /lib64/libc-2.12.so)
+==15630==    by 0x37AAA46367: vfprintf (in /lib64/libc-2.12.so)
+==15630==    by 0x37AAA4EA29: printf (in /lib64/libc-2.12.so)
+==15630==    by 0x400519: main (uninit.c:8)
+==15630== 
+==15630== Conditional jump or move depends on uninitialised value(s)
+==15630==    at 0x37AAA437C5: _itoa_word (in /lib64/libc-2.12.so)
+==15630==    by 0x37AAA46367: vfprintf (in /lib64/libc-2.12.so)
+==15630==    by 0x37AAA4EA29: printf (in /lib64/libc-2.12.so)
+==15630==    by 0x400519: main (uninit.c:8)
+==15630== 
+==15630== Conditional jump or move depends on uninitialised value(s)
+==15630==    at 0x37AAA45979: vfprintf (in /lib64/libc-2.12.so)
+==15630==    by 0x37AAA4EA29: printf (in /lib64/libc-2.12.so)
+==15630==    by 0x400519: main (uninit.c:8)
+==15630== 
+==15630== Conditional jump or move depends on uninitialised value(s)
+==15630==    at 0x37AAA45997: vfprintf (in /lib64/libc-2.12.so)
+==15630==    by 0x37AAA4EA29: printf (in /lib64/libc-2.12.so)
+==15630==    by 0x400519: main (uninit.c:8)
+==15630== 
+7
+==15630== Use of uninitialised value of size 8
+==15630==    at 0x40051E: main (uninit.c:10)
+==15630== 
+==15630== Invalid read of size 4
+==15630==    at 0x40051E: main (uninit.c:10)
+==15630==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==15630== 
+==15630== 
+==15630== Process terminating with default action of signal 11 (SIGSEGV)
+==15630==  Access not within mapped region at address 0x0
+==15630==    at 0x40051E: main (uninit.c:10)
+==15630==  If you believe this happened as a result of a stack
+==15630==  overflow in your program's main thread (unlikely but
+==15630==  possible), you can try to increase the size of the
+==15630==  main thread stack using the --main-stacksize= flag.
+==15630==  The main thread stack size used in this run was 10485760.
+==15630== 
+==15630== HEAP SUMMARY:
+==15630==     in use at exit: 0 bytes in 0 blocks
+==15630==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==15630== 
+==15630== All heap blocks were freed -- no leaks are possible
+==15630== 
+==15630== For counts of detected and suppressed errors, rerun with: -v
+==15630== Use --track-origins=yes to see where uninitialised values come from
+==15630== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 6 from 6)
+Segmentation fault (core dumped)
+bash-4.1$ echo $?
+139
+bash-4.1$ pstatus 139
+pstatus: 0x008B TERMINATED 11: Segmentation fault (core dumped)
+bash-4.1$ exit
+exit
+
+Script done on Tue 06 Nov 2012 11:55:28 AM PST

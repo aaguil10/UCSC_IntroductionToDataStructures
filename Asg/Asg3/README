@@ -1,0 +1,7 @@
+$Id: README,v 1.1 2012-10-31 13:12:50-07 - - $
+ALejandro Aguilar aaguil10@ucsc.edu
+
+
+IMpleneted  the put get and visit_all fuctions.
+edited scanfile
+options returns outofboundsexeption 0 

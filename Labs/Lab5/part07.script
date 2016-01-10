@@ -1,0 +1,50 @@
+Script started on Tue 06 Nov 2012 12:39:44 PM PST
+[?1034hbash-4.1$ gdb list2
+[?1034hGNU gdb (GDB) Red Hat Enterprise Linux (7.2-50.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /afs/cats.ucsc.edu/users/n/aaguil10/Documents/CMPS12B/Labs/Lab5/list2...done.
+(gdb) break main
+Breakpoint 1 at 0x4005a4: file list2.c, line 15.
+(gdb) run foo bar
+Starting program: /afs/cats.ucsc.edu/users/n/aaguil10/Documents/CMPS12B/Labs/Lab5/list2 foo bar
+
+Breakpoint 1, main (argc=3, argv=0x7fffffffe328) at list2.c:15
+15	   for (int argi = 0; argi < 5; ++argi) {
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.47.el6_2.12.x86_64
+(gdb) print argc
+$1 = 3
+(gdb) print argv
+$2 = (char **) 0x7fffffffe328
+(gdb) print argv[0]
+$3 = 0x7fffffffe5b2 "/afs/cats.ucsc.edu/users/n/aaguil10/Documents/CMPS12B/Labs/Lab5/list2"
+(gdb) print argv[1]
+$4 = 0x7fffffffe5f8 "foo"
+(gdb) print argv[2]
+$5 = 0x7fffffffe5fc "bar"
+(gdb) print arg[3]
+No symbol "arg" in current context.
+(gdb) print argv[3]
+$6 = 0x0
+(gdb) print arg[4]v[4][C[C[C
+$7 = 0x7fffffffe600 "HOSTNAME=unix2.ic.ucsc.edu"
+(gdb) print argv[5]
+$8 = 0x7fffffffe61b "SELINUX_ROLE_REQUESTED="
+(gdb) print arg[6]v[6][C[C[C
+$9 = 0x7fffffffe633 "GNUPLOT_DEFAULT_GDFONT=LiberationSans-Regular"
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 21131] will be killed.
+
+Quit anyway? (y or n) y
+bash-4.1$ exit
+exit
+
+Script done on Tue 06 Nov 2012 12:43:24 PM PST

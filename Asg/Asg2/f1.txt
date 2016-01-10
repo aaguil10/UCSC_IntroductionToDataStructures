@@ -1,0 +1,11 @@
+food = cake
+animal = bear
+1 = 5
+=
+#this is a comment
+car = red
+exit
+1 = 7
+= bear
+=
+
